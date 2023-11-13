@@ -1,11 +1,17 @@
 import morgan from "morgan";
-import app from "./app.js";
-import thingsRouter from "./thingsRouter.js";
+import thingsRouter from "./fetaures/things/router/thingsRouter.js";
+import express from "express";
+import chalk from "chalk";
+
+const app = express();
+const port = process.env.PORT ?? 4000;
+
+app.listen(+port, () => {
+  console.log(chalk.green(`Listening on http://localhost:${port}`));
+});
 
 app.use(morgan("dev"));
 
 app.use("/things", thingsRouter);
 
-app.use((_req, res) => {
-  res.status(404).json({ error: "Endpoint not found" });
-});
+app.use(express.json());

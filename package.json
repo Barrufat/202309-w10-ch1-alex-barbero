@@ -1,12 +1,12 @@
 {
-  "name": "kata01-express",
+  "name": "w10ch1-express",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "build:dev": "tsc --watch",
+    "build:dev": "tsc -w",
     "start": "node .",
     "start:dev": "node --watch .",
     "prepare": "husky install"
