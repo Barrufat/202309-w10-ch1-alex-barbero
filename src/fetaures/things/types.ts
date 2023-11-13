@@ -1,7 +1,7 @@
 interface ThingStructure {
   id: number;
   thingName: string;
-  type: string;
+  learnedLevel: string;
 }
 
 export default ThingStructure;
