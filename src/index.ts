@@ -1,17 +1,13 @@
 import morgan from "morgan";
-import thingsRouter from "./fetaures/things/router/thingsRouter.js";
 import express from "express";
-import chalk from "chalk";
+import app from "./app.js";
+import thingsRouter from "./features/things/router/thingsRouter.js";
+import PingController from "./features/ping/Controller/PingController.js";
 
-const app = express();
-const port = process.env.PORT ?? 4000;
-
-app.listen(+port, () => {
-  console.log(chalk.green(`Listening on http://localhost:${port}`));
-});
-
-app.use(morgan("dev"));
-
-app.use("/things", thingsRouter);
+const pingController = new PingController();
 
 app.use(express.json());
+app.use(morgan("dev"));
+
+app.get("/", pingController.getPong);
+app.use("/things", thingsRouter);
